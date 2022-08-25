@@ -8,7 +8,46 @@ resource "azuread_service_principal" "example" {
 }
 
 resource "azurerm_role_assignment" "test" {
-  scope                = "e4f8a1c0-3c31-44d5-8306-01bfd1c41e9e"   # the resource id
-  role_definition_name = "owner" # such as "Contributor"
-  principal_id         = azuread_service_principal.example.application_id
+  scope                = data.azurerm_subscription.Azure_subscription_1.id  # the resource id
+  role_definition_name = "Owner" # such as "Contributor"
+  principal_id         = azuread_service_principal.example.id
+}
+
+# Generate a private key
+resource "tls_private_key" "example" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+# Generate a self signed certificate
+resource "tls_self_signed_cert" "example" {
+  # key_algorithm   = "RSA"
+  
+  private_key_pem = tls_private_key.example.private_key_pem
+
+  subject {
+    common_name  = azuread_application.example.display_name
+    organization = "Example Corp"
+  }
+    allowed_uses = [
+    "key_encipherment",
+    "digital_signature",
+    "server_auth",
+  ]
+ # allowed_uses          = ["client_auth", "server_auth"]
+  validity_period_hours = 8760
+}
+
+# Create Application certificate (client certificate)
+resource "azuread_application_certificate" "example" {
+  application_object_id = azuread_application.example.object_id
+  type                  = "AsymmetricX509Cert"
+  end_date_relative     = "8640h" # expire in 12 months
+  value                 = tls_self_signed_cert.example.cert_pem
+}
+
+# Create Application password (client secret)
+resource "azuread_application_password" "example" {
+  application_object_id = azuread_application.example.object_id
+  end_date_relative     = "4320h" # expire in 6 months
 }
