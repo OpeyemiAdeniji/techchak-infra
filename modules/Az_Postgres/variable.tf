@@ -1,13 +1,13 @@
 variable "postgresql-admin-login" {
   type        = string
   description = "Login to authenticate to PostgreSQL Server"
-  default = "techchak"
+  default     = "techchak"
 }
 
 variable "postgresql-admin-password" {
   type        = string
   description = "Password to authenticate to PostgreSQL Server"
-  default = "Pluto123!#$%^"
+  default     = "Pluto123!#$%^"
 }
 
 variable "postgresql-version" {
