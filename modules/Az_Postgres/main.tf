@@ -19,6 +19,8 @@ resource "azurerm_postgresql_server" "postgresql-server" {
   public_network_access_enabled    = true
   ssl_enforcement_enabled          = true
   ssl_minimal_tls_version_enforced = "TLS1_2"
+
+  depends_on = [module.Az_Container_Reg.main]
 }
 
 # Create a PostgreSQL Database
@@ -28,6 +30,7 @@ resource "azurerm_postgresql_database" "postgresql-db" {
   server_name         = azurerm_postgresql_server.postgresql-server.name
   charset             = "utf8"
   collation           = "English_United States.1252"
+  depends_on = [module.Az_Container_Reg.main]
 }
 
 # Firewall Rule to access the PostgreSQL Server
@@ -37,4 +40,5 @@ resource "azurerm_postgresql_firewall_rule" "postgresql-fw-rule" {
   server_name         = azurerm_postgresql_server.postgresql-server.name
   start_ip_address    = var.PG_StartIpAddress
   end_ip_address      = var.PG_EndIpAddress
+  depends_on = [module.Az_Container_Reg.main]
 }
