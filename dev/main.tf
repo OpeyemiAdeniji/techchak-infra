@@ -23,7 +23,7 @@ module "service_principal" {
 }
 
 module "container_registry" {
-  source        = "../modules/Az_Container_Reg" #directory of the container registery
+  source        = "../modules/Az_Container_Reg" 
   organization  = var.organization
   location      = var.location
   container_sku = var.container_sku
