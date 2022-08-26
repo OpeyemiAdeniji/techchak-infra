@@ -11,6 +11,9 @@ module "postgres_database" {
   postgresql-version        = var.postgresql-version
   postgresql-storage        = var.postgresql-storage
   prefix                    = var.prefix
+  depends_on = [
+    module.container_registry
+  ]
 }
 
 module "service_principal" {
@@ -20,6 +23,9 @@ module "service_principal" {
   end_date_cert        = var.end_date_cert
   end_date_sect        = var.end_date_sect
   prefix               = var.prefix
+  depends_on = [
+    module.container_registry
+  ]
 }
 
 module "container_registry" {
