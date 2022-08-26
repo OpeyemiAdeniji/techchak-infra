@@ -1,9 +1,9 @@
 module "container_registry" {
-  source        = "../modules/Az_Container_Reg"
-  organization  = var.organization
-  location      = var.location
-  container_sku = var.container_sku
-  prefix        = var.prefix
+  source              = "../modules/Az_Container_Reg"
+  organization        = var.organization
+  location            = var.location
+  container_sku       = var.container_sku
+  prefix              = var.prefix
   resource_group_name = var.resource_group_name
 }
 
