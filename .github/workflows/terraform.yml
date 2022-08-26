@@ -10,14 +10,18 @@ jobs:
   terraform:
     name: 'Terraform'
     env:
-      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+      # ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      # ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+      # ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      # ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
       # ARM_CLIENT_ID: module.service_principal.client_id
       # ARM_CLIENT_SECRET: module.service_principal.client_secret
       # ARM_SUBSCRIPTION_ID: module.service_principal.subscription_id
       # ARM_TENANT_ID: module.service_principal.tenant_id
+      ARM_CLIENT_ID: "3ec82fec-bf3c-4524-b3df-d09eaf9db524"
+      ARM_CLIENT_SECRET: "HLu8Q~-81qqF89Yyr8Cgt8uHa86XysQlQFEQUcqT"
+      ARM_SUBSCRIPTION_ID: "e4f8a1c0-3c31-44d5-8306-01bfd1c41e9e"
+      ARM_TENANT_ID: "b3b2e50b-a6e1-486e-93ff-18daf8bf3844"
     runs-on: ubuntu-latest
     environment: production
  
