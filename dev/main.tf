@@ -11,7 +11,7 @@ module "postgres_database" {
   source                    = "../modules/Az_Postgres"
   db_name                   = var.db_name
   location                  = var.location
-  resource_group_name       = var.resource_group_name
+  resource_group_name       = module.container_registry.resource_group
   postgresql-admin-login    = var.postgresql-admin-login
   postgresql-admin-password = var.postgresql-admin-password
   PG_StartIpAddress         = var.PG_StartIpAddress
