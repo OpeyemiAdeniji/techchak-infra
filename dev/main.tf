@@ -4,6 +4,7 @@ module "container_registry" {
   location      = var.location
   container_sku = var.container_sku
   prefix        = var.prefix
+  resource_group_name = var.resource_group_name
 }
 
 module "postgres_database" {
