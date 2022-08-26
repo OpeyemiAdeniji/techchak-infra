@@ -20,6 +20,7 @@ module "postgres_database" {
   postgresql-version        = var.postgresql-version
   postgresql-storage        = var.postgresql-storage
   prefix                    = var.prefix
+  organization              = var.organization
 }
 
 module "service_principal" {
