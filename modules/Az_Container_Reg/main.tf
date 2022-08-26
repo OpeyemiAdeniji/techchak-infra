@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "techchak" {
-  name     = "${var.organization}-${var.prefix}"
+  name     = "${var.resource_group_name}-${var.prefix}"
   location = var.location
 }
 
