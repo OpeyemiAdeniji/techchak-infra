@@ -55,3 +55,7 @@ variable "PG_EndIpAddress" {
   type        = string
   description = "PostgreSQL End Ip Address"
 }
+
+variable "organization" {
+  description = "The organization for our resource"
+}

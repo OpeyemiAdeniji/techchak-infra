@@ -1,6 +1,6 @@
 # Create a PostgreSQL Server
 resource "azurerm_postgresql_server" "postgresql-server" {
-  name                = "${var.prefix}-postgresql-server"
+  name                = "${var.prefix}-postgresql-server-${var.organization}"
   location            =  var.location
   resource_group_name = "${var.resource_group_name}-${var.prefix}"
 
