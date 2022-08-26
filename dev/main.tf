@@ -14,7 +14,7 @@ module "postgres_database" {
 }
 
 module "service_principal" {
-  source               = "../modules/service_principal" # you can always change the subscription value in data.tf under service principal folder
+  source               = "../modules/service_principal" #you can always change the subscription value in data.tf under service principal folder
   organization         = var.organization
   role_definition_name = var.role_definition_name
   end_date_cert        = var.end_date_cert
