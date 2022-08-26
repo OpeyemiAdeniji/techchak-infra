@@ -1,29 +1,29 @@
 output "display_name" {
-  value = azuread_service_principal.example.display_name
+  value = module.service_principal.display_name
 }
 
 output "client_id" {
-  value = azuread_application.example.application_id
+  value = module.service_principal.client_id
 }
 
 output "tenant_id" {
-  value = data.azuread_client_config.Azure_subscription_1.tenant_id
+  value = module.service_principal.tenant_id
 }
 
 output "subscription_id" {
-  value = data.azurerm_subscription.Azure_subscription_1.id
+  value = module.service_principal.subscription_id
 }
 
 output "client_certificate" {
-  value = tls_self_signed_cert.example.cert_pem
+  value = module.service_principal.client_certificate
 }
 
 output "client_key" {
-  value     = tls_private_key.example.private_key_pem
+  value     = module.service_principal.client_key
   sensitive = true
 }
 
 output "client_secret" {
-  value     = azuread_application_password.example.value
+  value     = module.service_principal.client_secret
   sensitive = true
 }
