@@ -27,3 +27,7 @@
 #   value     = module.service_principal.client_secret
 #   sensitive = true
 # }
+
+output "resource_group" {
+  value = module.container_registry.resource_group
+}

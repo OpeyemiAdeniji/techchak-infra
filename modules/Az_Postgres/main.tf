@@ -3,7 +3,7 @@ resource "azurerm_postgresql_server" "postgresql-server" {
   name                = "${var.prefix}-postgresql-server-${var.organization}"
   location            =  var.location
   # resource_group_name = "${var.resource_group_name}-${var.prefix}" 
-  # resource_group_name = "techchakdev-resources-dev" 
+  resource_group_name = module.container_registry.resource_group 
 
   administrator_login          = var.postgresql-admin-login
   administrator_login_password = var.postgresql-admin-password
