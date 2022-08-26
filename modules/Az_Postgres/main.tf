@@ -40,5 +40,5 @@ resource "azurerm_postgresql_firewall_rule" "postgresql-fw-rule" {
   server_name         = azurerm_postgresql_server.postgresql-server.name
   start_ip_address    = var.PG_StartIpAddress
   end_ip_address      = var.PG_EndIpAddress
-  depends_on = [pvar.resource_group_name]
+  depends_on = [var.resource_group_name]
 }
