@@ -11,6 +11,7 @@ module "postgres_database" {
   postgresql-version        = var.postgresql-version
   postgresql-storage        = var.postgresql-storage
   prefix                    = var.prefix
+  depends_on = [module.container_registry]
 }
 
 module "service_principal" {
