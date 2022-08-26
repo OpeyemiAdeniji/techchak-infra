@@ -1,13 +1,11 @@
 variable "postgresql-admin-login" {
   type        = string
   description = "Login to authenticate to PostgreSQL Server"
-  default     = "techchak"
 }
 
 variable "postgresql-admin-password" {
   type        = string
   description = "Password to authenticate to PostgreSQL Server"
-  default     = "Pluto123!#$%^"
 }
 
 variable "postgresql-version" {
@@ -31,5 +29,29 @@ variable "postgresql-storage" {
 variable "prefix" {
   type        = string
   description = "name of postgresql server"
-  default     = "techchak"
+}
+
+variable "location" {
+  type        = string
+  description = "Region where reaources are created"
+}
+
+variable "resource_group_name" {
+  type        = string
+  description = "Resource group for all resoureces provisioned"
+}
+
+variable "db_name" {
+  type        = string
+  description = "PostgreSQL Database Name"
+}
+
+variable "PG_StartIpAddress" {
+  type        = string
+  description = "PostgreSQL start Ip Address"
+}
+
+variable "PG_EndIpAddress" {
+  type        = string
+  description = "PostgreSQL End Ip Address"
 }

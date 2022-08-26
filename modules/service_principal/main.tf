@@ -1,5 +1,5 @@
 resource "azuread_application" "example" {
-  display_name = "example"
+  display_name = "${var.organization}-${var.prefix}"
 }
 
 resource "azuread_service_principal" "example" {
@@ -9,7 +9,7 @@ resource "azuread_service_principal" "example" {
 
 resource "azurerm_role_assignment" "test" {
   scope                = data.azurerm_subscription.Azure_subscription_1.id # the resource id
-  role_definition_name = "Owner"                                           # such as "Contributor"
+  role_definition_name = var.role_definition_name   # such as "Contributor"
   principal_id         = azuread_service_principal.example.id
 }
 
@@ -27,7 +27,7 @@ resource "tls_self_signed_cert" "example" {
 
   subject {
     common_name  = azuread_application.example.display_name
-    organization = "Example Corp"
+    organization = var.organization
   }
   allowed_uses = [
     "key_encipherment",
@@ -42,12 +42,12 @@ resource "tls_self_signed_cert" "example" {
 resource "azuread_application_certificate" "example" {
   application_object_id = azuread_application.example.object_id
   type                  = "AsymmetricX509Cert"
-  end_date_relative     = "8640h" # expire in 12 months
+  end_date_relative     = var.end_date_cert # expire in 12 months
   value                 = tls_self_signed_cert.example.cert_pem
 }
 
 # Create Application password (client secret)
 resource "azuread_application_password" "example" {
   application_object_id = azuread_application.example.object_id
-  end_date_relative     = "4320h" # expire in 6 months
+  end_date_relative     = var.end_date_sect # expire in 6 months
 }

@@ -10,6 +10,9 @@ output "tenant_id" {
   value = data.azuread_client_config.Azure_subscription_1.tenant_id
 }
 
+output "subscription_id" {
+  value = data.azurerm_subscription.Azure_subscription_1.id 
+}
 
 output "client_certificate" {
   value = tls_self_signed_cert.example.cert_pem
