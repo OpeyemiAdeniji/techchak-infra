@@ -1,3 +1,11 @@
+module "container_registry" {
+  source        = "../modules/Az_Container_Reg"
+  organization  = var.organization
+  location      = var.location
+  container_sku = var.container_sku
+  prefix        = var.prefix
+}
+
 module "postgres_database" {
   source                    = "../modules/Az_Postgres"
   db_name                   = var.db_name
@@ -11,9 +19,6 @@ module "postgres_database" {
   postgresql-version        = var.postgresql-version
   postgresql-storage        = var.postgresql-storage
   prefix                    = var.prefix
-  depends_on = [
-    module.container_registry
-  ]
 }
 
 module "service_principal" {
@@ -23,15 +28,4 @@ module "service_principal" {
   end_date_cert        = var.end_date_cert
   end_date_sect        = var.end_date_sect
   prefix               = var.prefix
-  depends_on = [
-    module.container_registry
-  ]
-}
-
-module "container_registry" {
-  source        = "../modules/Az_Container_Reg"
-  organization  = var.organization
-  location      = var.location
-  container_sku = var.container_sku
-  prefix        = var.prefix
 }
