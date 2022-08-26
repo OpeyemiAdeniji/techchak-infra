@@ -10,7 +10,6 @@ variable "organization" {
   description = "The organization for our resource"
 }
 
-
 variable "container_sku" {
   description = "The container SKU for our container registry"
 }
